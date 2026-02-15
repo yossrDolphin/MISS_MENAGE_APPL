@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "570596588869",
+    "project_id": "fixio-flutter-project",
+    "storage_bucket": "fixio-flutter-project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:570596588869:android:0996bd85865954d73e122c",
+        "android_client_info": {
+          "package_name": "com.example.miss_menage_appl"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcGI0732_P5PWZv7xAY8XqPCHw9MsAUXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
