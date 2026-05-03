@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/colors.dart';
-import '../services/service.dart';
+import '../services/models/service.dart';
 
 class BookingSummaryPage extends StatelessWidget {
   final Service service;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../core/constants/colors.dart';
-import 'service.dart';
-import '../booking/booking_page.dart';
+import '../../../core/constants/colors.dart';
+import '../models/service.dart';
+import '../../booking/booking_page.dart';
 
 class ServiceDetailsPage extends StatelessWidget {
   final Service service;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../home/home_page.dart';
-import '../services/auth_service.dart';
+import '../../core/services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -60,13 +60,13 @@ class _LoginPageState extends State<LoginPage> {
                           });
                         },
                         onError: (e) {
-                          setState(() => loading = false);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content:
-                                  Text(e.message ?? 'Erreur Firebase'),
-                            ),
-                          );
+                           if (!mounted) return;
+                            setState(() => loading = false);
+                             ScaffoldMessenger.of(context).showSnackBar(
+                             SnackBar(
+                               content: Text(e.message ?? 'Erreur Firebase'),
+                             ),
+                             );
                         },
                       );
                     },
@@ -93,6 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                       verificationId: verificationId!,
                       smsCode: otpController.text.trim(),
                     );
+                if (!mounted) return;
 
                     Navigator.pushReplacement(
                       context,
@@ -101,11 +102,13 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     );
                   } catch (e) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Code invalide'),
-                      ),
-                    );
+                   if (!mounted) return;
+
+                     ScaffoldMessenger.of(context).showSnackBar(
+                     const SnackBar(
+                      content: Text('Code invalide'),
+                        ),
+                       );
                   }
                 },
                 child: const Text('Se connecter'),

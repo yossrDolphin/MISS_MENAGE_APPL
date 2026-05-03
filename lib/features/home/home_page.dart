@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fixio/features/services/presentation/categories_page.dart';
 import 'package:flutter/material.dart';
 import '../../core/constants/colors.dart';
-import '../services/service.dart';
-import '../services/service_details_page.dart';
+import '../services/models/service.dart';
+import '../services/presentation/service_details_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -67,33 +68,7 @@ class HomePage extends StatelessWidget {
   drawer: _buildDrawer(context),
 
 
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            HomeHeader(),
-             SizedBox(height: 8),
-             SectionTitle('Available services'),
-
-           ServiceCard(
-              icon: Icons.cleaning_services,
-              title: 'Cleaning',
-              subtitle: 'Home & office cleaning',
-            ),
-            ServiceCard(
-              icon: Icons.plumbing,
-              title: 'Plumbing',
-              subtitle: 'Pipes, leaks, repairs',
-            ),
-            ServiceCard(
-              icon: Icons.electrical_services,
-              title: 'Electrical',
-              subtitle: 'Installation & fixes',
-            ),
-          ],
-        ),
-      ),
+      body: const CategoriesPage(),
     );
   }
 Widget _buildDrawer(BuildContext context) {
@@ -251,6 +226,7 @@ class SectionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /*
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Text(
@@ -261,5 +237,9 @@ class SectionTitle extends StatelessWidget {
         ),
       ),
     );
+    */
+  return const CategoriesPage();
+
+
   }
 }

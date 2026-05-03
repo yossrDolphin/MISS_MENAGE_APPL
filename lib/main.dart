@@ -1,3 +1,4 @@
+import 'package:fixio/features/auth/login_page.dart';
 import 'package:fixio/features/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
               if (snapshot.hasData) {
         return const HomePage();
       } else {
-        return const HomePage();
+        return const LoginPage();
       }
 
         },
