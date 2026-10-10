@@ -1,0 +1,24 @@
+{
+  "@@locale": "ar",
+
+  "welcome": "مرحباً",
+  "findBest": "اعثر على أفضل خدمات المنزل",
+  "searchHint": "ابحث عن خدمة...",
+  "categories": "الفئات",
+  "popularServices": "الخدمات الشائعة",
+
+  "home": "الرئيسية",
+  "profile": "الحساب",
+  "bookings": "حجوزاتي",
+  "logout": "تسجيل الخروج",
+
+  "cleaning": "التنظيف",
+  "plumbing": "السباكة",
+  "electrical": "الكهرباء",
+  "installation": "التركيب",
+
+  "findServices": "ابحث عن خدمة",
+  "comingSoon": "قريباً 🚀",
+  "helpQst": "هل تحتاج إلى المساعدة اليوم؟",
+  "bookTrust": "احجز محترفين موثوقين ببضع نقرات فقط"
+}

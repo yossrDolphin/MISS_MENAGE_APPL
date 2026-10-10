@@ -1,0 +1,26 @@
+{
+  "@@locale": "en",
+
+  "welcome": "Welcome",
+  "findBest": "Find the best home services",
+  "searchHint": "Search services...",
+  "categories": "Categories",
+  "popularServices": "Popular Services",
+
+  "home": "Home",
+  "profile": "Profile",
+  "bookings": "My Bookings",
+  "logout": "Logout",
+
+  "cleaning": "Cleaning",
+  "plumbing": "Plumbing",
+  "electrical": "Electrical",
+  "installation": "Installation",
+
+  "findServices": "Find Services",
+  
+  "comingSoon": "Coming Soon 🚀",
+  "helpQst": "Need help today?",
+  "bookTrust": "Book trusted professionals in just a few taps."
+
+}

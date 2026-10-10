@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../core/constants/colors.dart';
-import '../services/models/service.dart';
+
+import '../../../core/constants/app_colors.dart';
+import '../../services/models/service.dart' show Service;
+
 
 class BookingSummaryPage extends StatelessWidget {
   final Service service;

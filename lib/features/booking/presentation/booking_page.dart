@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import '../../core/constants/colors.dart';
-import '../services/models/service.dart';
+import '../../../core/constants/app_colors.dart';
+import '../../services/models/service.dart';
 import 'booking_summary_page.dart';
-import 'map_picker_page.dart';
+import '../map_picker_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class BookingPage extends StatefulWidget {
   final Service service;
@@ -20,6 +21,8 @@ class _BookingPageState extends State<BookingPage> {
   DateTime? selectedDate;
   TimeOfDay? selectedTime;
   LatLng? selectedLocation;
+  bool isLoading = false;
+
 
   final TextEditingController dateController = TextEditingController();
   final TextEditingController timeController = TextEditingController();
@@ -46,6 +49,9 @@ Future<void> saveBooking() async {
             'lat': selectedLocation!.latitude,
             'lng': selectedLocation!.longitude,
           },
+     'userId': FirebaseAuth.instance.currentUser!.uid,
+     'status': 'pending',
+
   });
 }
 
@@ -188,62 +194,54 @@ Future<void> saveBooking() async {
                 ),
               ],
             ),
-
             SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () async {
-                  if (selectedDate == null ||
-                      selectedTime == null
-                  //     || selectedLocation == null
-                      ) {
-                        
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Please select date, time and location'),
-                      ),
-                    );
-                    return;
-                  }
-                   try {
-                        final data = {
-                          'serviceName': widget.service.name,
-                          'date': selectedDate,
-                          'time': selectedTime!.format(context),
-                          'notes': notesController.text,
-                          'createdAt': FieldValue.serverTimestamp(),
-                        };
+  width: double.infinity,
+  child: ElevatedButton(
+    onPressed: isLoading
+        ? null
+        : () async {
+            setState(() => isLoading = true);
 
-                  if (selectedLocation != null) {
-                 data['location'] = {
-                       'lat': selectedLocation!.latitude,
-                       'lng': selectedLocation!.longitude,
-                      };
-                  }
+            try {
+              await saveBooking();
 
-        await FirebaseFirestore.instance.collection('bookings').add(data);
+              if (!mounted) return;
 
-                    await saveBooking();
-                            Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                            builder: (_) => BookingSummaryPage(
-                            service: widget.service,
-                            date: selectedDate!,
-                            time: selectedTime!,
-                            address: displayAddress,
-                            ),
-                          ),
-                          );
-                } catch(e) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Error saving booking: $e')),
-                   );
-                }
-                },
-                child: const Text('Confirm request'),
-              ),
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => BookingSummaryPage(
+                    service: widget.service,
+                    date: selectedDate!,
+                    time: selectedTime!,
+                    address: displayAddress,
+                  ),
+                ),
+              );
+            } catch (e) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Error: $e')),
+              );
+            }
+
+            if (mounted) {
+              setState(() => isLoading = false);
+            }
+          },
+
+    // 👇 HERE is where you put it
+    child: isLoading
+        ? const SizedBox(
+            height: 20,
+            width: 20,
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: Colors.white,
             ),
+          )
+        : const Text('Confirm request'),
+  ),
+),
           ],
         ),
       ),

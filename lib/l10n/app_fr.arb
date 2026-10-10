@@ -1,0 +1,25 @@
+{
+  "@@locale": "fr",
+
+  "welcome": "Bienvenue",
+  "findBest": "Trouvez les meilleurs services à domicile",
+  "searchHint": "Rechercher un service...",
+  "categories": "Catégories",
+  "popularServices": "Services populaires",
+
+  "home": "Accueil",
+  "profile": "Profil",
+  "bookings": "Mes réservations",
+  "logout": "Déconnexion",
+
+  "cleaning": "Nettoyage",
+  "plumbing": "Plomberie",
+  "electrical": "Électricité",
+  "installation": "Installation",
+
+  "findServices": "Trouver un service",
+  "comingSoon": "Bientôt disponible 🚀",
+  "helpQst": "Besoin d’aide aujourd’hui ?",
+  "bookTrust": "Réservez des professionnels de confiance en quelques clics."
+
+}

@@ -1,5 +1,6 @@
 import 'package:fixio/features/auth/login_page.dart';
 import 'package:fixio/features/home/home_page.dart';
+import 'package:fixio/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,6 +18,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+
+  supportedLocales: AppLocalizations.supportedLocales,
+
+  locale: const Locale('en'),
+
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
